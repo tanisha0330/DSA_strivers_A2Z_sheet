@@ -25,3 +25,24 @@ public:
     }
 };
 
+
+
+class Solution {
+public:
+
+    bool optimal_containsNearbyDuplicate(vector<int>& nums, int k) {
+        unordered_map<int , int> last_index; 
+        int n = nums.size(); 
+
+        for (int i=0 ; i<n; i++)
+        {
+            if (last_index.count(nums[i])==true)
+            {
+                if (abs(i-last_index[nums[i]])<=k)
+                return true ; 
+            }
+            last_index[nums[i]] =i ;
+        }
+        return false ; 
+    }
+};
